@@ -1,0 +1,97 @@
+initalprojects.pdf Date: February 12, 2026
+Status: Final
+Capstone Project 1: Recipe Sharing API with Image Upload
+Build a REST API for a recipe sharing platform where users can post recipes with images, search for
+recipes by ingredients, and rate others' recipes. This is similar to apps like Tasty or AllRecipes. The API
+should handle image uploads, process them (resize/compress), store recipe data, and provide search
+functionality.
+Deliverables
+Complete REST API with proper project structure
+Database schema/migrations
+Postman/curl collection for testing all endpoints
+README with API documentation and setup instructions
+Capstone Project 3: Student Grade Management System API
+Build a REST API for managing student grades similar to university portals like Canvas or Blackboard.
+The system should support different user roles (students, teachers, admins), allow teachers to manage
+courses and grades, and provide students with their academic performance data including GPA
+calculation and grade statistics.
+Deliverables
+Complete REST API with proper structure
+Database schema with relationships
+Seed data script (sample users, courses, grades)
+API documentation (Postman collection or OpenAPI spec)
+README with role permissions matrix and setup guide
+Capstone Project 4: Movie Watchlist & Recommendation API
+Build a REST API that integrates with external movie databases (like OMDB or TMDB) to help users
+manage their watchlists and get recommendations. Users can search for movies, add them to
+watchlists, rate watched movies, and get personalized recommendations based on their ratings and
+genres.
+Deliverables
+Complete REST API
+Database schema for user data and cached movies
+README with API documentation and external API setup
+Document explaining your caching strategy
+Capstone Project 5: Event Registration & Ticketing System
+Build a REST API for event registration and ticketing (like Eventbrite). Users can browse events, register
+for events with limited capacity, and organizers can create events and manage registrations. The critical
+challenge is handling concurrent registrations to prevent overbooking when multiple users try to register
+for the last few spots simultaneously.
+Deliverables
+Complete REST API
+Database schema with proper constraints
+Concurrent booking test (simulate multiple users booking last spot)
+README with concurrency strategy explanation
+Document explaining your approach to preventing race conditions
+Capstone Project 6: Online Quiz Platform API
+Build a REST API for an online quiz/exam platform (like Kahoot or Google Forms for exams). Teachers
+create quizzes with time limits, students take timed quizzes, and the system auto-grades submissions.
+The challenge is managing timed sessions accurately, preventing cheating (no peeking at answers), and
+handling concurrent quiz attempts.
+Deliverables
+Complete REST API
+Database schema for quizzes, questions, sessions, submissions
+README with API documentation
+Document explaining your timer implementation approach
+Capstone Project 7: Expense Tracker with Bill Splitting API
+Build a REST API for tracking shared expenses and splitting bills among friends (like Splitwise). Users
+can create groups (roommates, trip groups), add expenses, and the system calculates who owes whom.
+The challenge is implementing the settlement algorithm to minimize the number of transactions needed
+to settle all debts.
+Deliverables
+Complete REST API
+Database schema with proper decimal/money types
+Settlement algorithm implementation with explanation
+README with API documentation and algorithm explanation
+Example scenarios showing settlement optimization
+Document explaining your money handling approach
+Capstone Project 8: Food Delivery Order Management API
+Build a REST API for managing food delivery orders (like Uber Eats or DoorDash). Customers place
+orders, restaurants accept and prepare them, and drivers deliver them. The system must handle order
+lifecycle state transitions, real-time status updates, and coordinate between three user types. The
+challenge is implementing a robust state machine and ensuring valid state transitions.
+Deliverables
+Complete REST API
+State machine diagram showing all transitions
+Database schema with order state tracking
+README with API documentation and state machine explanation
+Document explaining your approach to preventing invalid state transitions
+Capstone Project 9: Workout & Fitness Tracker API
+Build a REST API for tracking workouts and fitness progress (like Strava or MyFitnessPal). Users log
+workouts, track personal records, view progress over time, and compete on leaderboards. The
+challenge is handling time-series data efficiently, calculating streaks, computing aggregated statistics,
+and managing user achievements.
+Deliverables
+Complete REST API
+Database schema optimized for time-series queries
+Streak calculation algorithm implementation
+README with API documentation
+Capstone Project 10: Library Book Management System API
+Build a REST API for a library management system (like your college library portal). Librarians manage
+books and inventory, students check out and return books, and the system handles reservations when
+books are unavailable. The challenge is implementing the checkout/return workflow with reservations,
+calculating fines for late returns, and managing the reservation queue.
+Deliverables
+Complete REST API
+Database schema with book copies and checkout tracking
+README with API documentation
+Document explaining your reservation queue and concurrent checkout handling
