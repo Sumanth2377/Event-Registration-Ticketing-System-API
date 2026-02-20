@@ -31,9 +31,43 @@ To elevate this project from an "API" to a real-world "Commerce Platform", the f
 - **Go 1.21+ Structured Logging**: Emits clean observability metrics using `log/slog`.
 - **Panic Protection**: A `RecoveryMiddleware` stops corrupted request payloads from crashing the server's memory block, cleanly returning `HTTP 500`.
 
+```mermaid
+sequenceDiagram
+    actor User
+    participant Router as API Router
+    participant RBAC as RBAC Middleware
+    participant RateLimiter as Rate Limiter
+    participant DB as SQLite (Tx)
+    participant Worker as Background Goroutine
+
+    User->>Router: POST /events/{id}/register
+    Router->>RateLimiter: Check IP Burst Limit
+    RateLimiter-->>Router: Allow
+    Router->>RBAC: Check X-Role
+    RBAC-->>Router: Valid 'user'
+    
+    rect rgb(200, 220, 240)
+        Note right of Router: The Atomic Edge Transaction
+        Router->>DB: BEGIN Tx
+        Router->>DB: UPDATE events SET spots = spots - 1 WHERE spots > 0
+        DB-->>Router: Rows Affected: 1
+        Router->>DB: INSERT INTO tickets (status='reserved', expires='+5m')
+        DB-->>Router: Success
+        Router->>DB: COMMIT 
+    end
+    Router-->>User: 201 Created (Ticket ID)
+
+    %% Background Reclamation
+    loop Every 10 Seconds
+        Worker->>DB: SELECT expired WHERE status='reserved'
+        Worker->>DB: UPDATE tickets SET status='cancelled'
+        Worker->>DB: UPDATE events SET spots = spots + 1
+    end
+```
+
 ---
 
-## 🚀 Running the Platform
+## Running the Platform
 
 Ensure Go is installed (`1.22` or greater).
 
@@ -54,7 +88,7 @@ All payloads use `application/json` encoded bodies.
 
 ---
 
-## ⚡ The Concurrency Stress Test
+## The Concurrency Stress Test
 
 The included test suite explicitly targets race condition vectors and proves the Optimistic SQL pattern is completely bulletproof.
 
